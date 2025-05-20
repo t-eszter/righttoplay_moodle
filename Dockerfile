@@ -2,8 +2,11 @@ FROM php:8.3-apache
 
 # Install required PHP extensions
 RUN apt-get update && apt-get install -y \
-    libpq-dev libzip-dev libxml2-dev libonig-dev unzip \
-    && docker-php-ext-install pdo_pgsql pgsql zip xml mbstring
+    libpq-dev libzip-dev libxml2-dev libonig-dev \
+    libjpeg-dev libpng-dev libxpm-dev libfreetype6-dev \
+    libicu-dev zlib1g-dev libsoap-php-dev libexif-dev \
+    && docker-php-ext-install \
+    pdo_pgsql pgsql zip xml mbstring exif soap gd intl opcache
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
