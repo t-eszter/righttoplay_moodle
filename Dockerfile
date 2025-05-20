@@ -8,6 +8,9 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install \
     pdo_pgsql pgsql zip xml mbstring exif soap gd intl opcache
 
+# Set max_input_vars to 5000+
+RUN echo "upload_max_filesize = 64M\npost_max_size = 64M\nmax_input_vars = 5000" >> /usr/local/etc/php/conf.d/moodle.ini
+
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
 
