@@ -26,3 +26,4 @@ RUN mkdir -p /var/www/moodledata && \
     chmod 770 /var/www/moodledata
 
 EXPOSE 80
+
